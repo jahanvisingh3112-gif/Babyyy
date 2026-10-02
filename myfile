@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Cutuu Potatuuu Babyyyy 💛</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:"Trebuchet MS",Arial,sans-serif;
+    background:#fff9d9;
+    color:#53633a;
+    overflow:hidden;
+}
+
+.page{
+    display:none;
+    width:100%;
+    height:100vh;
+    min-height:100vh;
+    padding:25px 16px;
+    text-align:center;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    position:relative;
+    overflow-y:auto;
+
+    background:
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(255,244,174,.72) 0 75px,
+            transparent 76px
+        ),
+
+        radial-gradient(
+            circle at 92% 88%,
+            rgba(255,239,154,.60) 0 95px,
+            transparent 96px
+        ),
+
+        linear-gradient(
+            135deg,
+            #fffbe4,
+            #fff6c9
+        );
+}
+
+.page.active{
+    display:flex;
+}
+
+.page::before,
+.page::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+}
+
+.page::before{
+    width:190px;
+    height:190px;
+    top:-95px;
+    right:-70px;
+    background:rgba(247,220,102,.25);
+}
+
+.page::after{
+    width:160px;
+    height:160px;
+    bottom:-85px;
+    left:-65px;
+    background:rgba(255,231,119,.28);
+}
+
+.page > *{
+    position:relative;
+    z-index:1;
+}
+
+h1,h2,h3{
+    font-family:cursive;
+    color:#54723c;
+}
+
+h1{
+    font-size:clamp(30px,8vw,56px);
+    line-height:1.15;
+    margin-bottom:18px;
+}
+
+h2{
+    font-size:clamp(27px,7vw,46px);
+    line-height:1.18;
+    margin-bottom:15px;
+}
+
+h3{
+    font-size:23px;
+    margin-bottom:8px;
+}
+
+p{
+    font-size:17px;
+    line-height:1.7;
+}
+
+.card{
+    background:rgba(255,254,239,.94);
+    padding:28px 22px;
+    border-radius:28px;
+    width:min(94%,700px);
+
+    box-shadow:
+        0 12px 35px rgba(110,100,45,.13),
+        0 2px 7px rgba(110,100,45,.06);
+
+    border:1.5px solid #eadb79;
+}
+
+.cat{
+    font-size:72px;
+    line-height:1;
+    margin-bottom:18px;
+}
+
+button{
+    border:none;
+    background:#86a866;
+    color:#fffdf0;
+    padding:13px 27px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    margin:8px;
+    cursor:pointer;
+
+    box-shadow:
+        0 6px 15px rgba(92,112,54,.18);
+
+    transition:.25s ease;
+}
+
+button:hover{
+    transform:translateY(-2px) scale(1.03);
+    background:#769958;
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+
+/* PASSWORD */
+
+.password-box input{
+    width:85%;
+    max-width:360px;
+    padding:14px 18px;
+
+    border:2px solid #d9cf83;
+    border-radius:25px;
+
+    outline:none;
+    font-size:16px;
+    text-align:center;
+
+    margin:10px 0;
+
+    background:#fffef4;
+    color:#53633a;
+}
+
+.password-box input:focus{
+    border-color:#86a866;
+}
+
+#error{
+    color:#b06b5d;
+    margin-top:8px;
+    min-height:24px;
+}
+
+
+/* PHOTO PAGE */
+
+.photo-container{
+    width:min(94%,850px);
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin:10px auto 20px;
+}
+
+.photo-card{
+    background:rgba(255,254,239,.95);
+    padding:9px;
+    border-radius:22px;
+    border:1.5px solid #eadb79;
+
+    box-shadow:
+        0 10px 25px rgba(110,100,45,.12);
+}
+
+.photo-card img{
+    width:100%;
+    aspect-ratio:1 / 1;
+    object-fit:cover;
+    display:block;
+    border-radius:17px;
+}
+
+.photo-card p{
+    font-size:14px;
+    margin-top:8px;
+}
+
+
+/* MEMORY */
+
+.memory-box{
+    width:min(94%,700px);
+}
+
+.memory{
+    background:rgba(255,254,239,.94);
+    border:1.5px solid #eadb79;
+    border-radius:24px;
+    padding:22px;
+    margin:12px 0;
+
+    box-shadow:
+        0 8px 22px rgba(110,100,45,.10);
+}
+
+.heart{
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:650px){
+
+    .photo-container{
+        grid-template-columns:1fr;
+        width:min(88%,360px);
+    }
+
+    .photo-card img{
+        aspect-ratio:4 / 3;
+    }
+
+    .page{
+        padding:20px 12px;
+    }
+
+    .card{
+        padding:25px 17px;
+    }
+
+    button{
+        padding:12px 22px;
+        font-size:15px;
+    }
+
+    p{
+        font-size:16px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     PASSWORD PAGE
+========================= -->
+
+<section class="page active" id="passwordPage">
+
+    <div class="card password-box">
+
+        <div class="cat">🐱💛</div>
+
+        <h1>
+            For My Cutuu<br>
+            Potatuuu Babyyyy 💛
+        </h1>
+
+        <p>
+            A tiny little place made<br>
+            with lots of love, memories & smiles. 🌼
+        </p>
+
+        <br>
+
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter secret password"
+        >
+
+        <br>
+
+        <button onclick="checkPassword()">
+            Open My Heart 💛
+        </button>
+
+        <div id="error"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     HOME PAGE
+========================= -->
+
+<section class="page" id="homePage">
+
+    <div class="card">
+
+        <div class="cat">🐱🌼</div>
+
+        <h1>
+            Hiiiii Cutuuuu 💛
+        </h1>
+
+        <p>
+            Welcome to our little corner of happiness.
+        </p>
+
+        <br>
+
+        <p>
+            Some moments are small,
+            but they become the memories
+            we never want to forget. ✨
+        </p>
+
+        <br>
+
+        <button onclick="showPage('photosPage')">
+            Our Photos 📸
+        </button>
+
+        <button onclick="showPage('memoryPage')">
+            A Little Message 💌
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     3 PHOTO PAGE
+========================= -->
+
+<section class="page" id="photosPage">
+
+    <h2>
+        Our Little Photo Album 📸💛
+    </h2>
+
+    <p>
+        Three little memories, one special place. 🌼
+    </p>
+
+    <br>
+
+    <div class="photo-container">
+
+        <!-- PHOTO 1 -->
+
+        <div class="photo-card">
+
+            <img
+                src="photo1.jpg"
+                alt="Our first photo"
+            >
+
+            <p>
+                Our first memory 💛
+            </p>
+
+        </div>
+
+
+        <!-- PHOTO 2 -->
+
+        <div class="photo-card">
+
+            <img
+                src="photo2.jpg"
+                alt="Our second photo"
+            >
+
+            <p>
+                A beautiful moment 🌼
+            </p>
+
+        </div>
+
+
+        <!-- PHOTO 3 -->
+
+        <div class="photo-card">
+
+            <img
+                src="photo3.jpg"
+                alt="Our third photo"
+            >
+
+            <p>
+                One to remember forever ✨
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button onclick="showPage('homePage')">
+        ← Home
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     MESSAGE PAGE
+========================= -->
+
+<section class="page" id="memoryPage">
+
+    <div class="memory-box">
+
+        <h2>
+            A Little Message 💌
+        </h2>
+
+        <div class="memory">
+
+            <div class="heart">
+                💛
+            </div>
+
+            <h3>
+                Cutuu Potatuuu
+            </h3>
+
+            <p>
+                Some people become a beautiful
+                part of our memories without even
+                trying.
+            </p>
+
+        </div>
+
+
+        <div class="memory">
+
+            <div class="heart">
+                🌼
+            </div>
+
+            <p>
+                I hope this little website always
+                reminds you of happy moments,
+                cute smiles and beautiful memories.
+            </p>
+
+        </div>
+
+
+        <button onclick="showPage('homePage')">
+            ← Home
+        </button>
+
+        <button onclick="showPage('photosPage')">
+            Photos 📸
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+function checkPassword(){
+
+    const enteredPassword =
+        document
+        .getElementById("passwordInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    /*
+       CHANGE YOUR PASSWORD HERE.
+
+       Currently the password is:
+
+       cutuu
+    */
+
+    const correctPassword = "cutuu";
+
+
+    if(enteredPassword === correctPassword){
+
+        document.getElementById("error").textContent = "";
+
+        showPage("homePage");
+
+    }
+
+    else{
+
+        document.getElementById("error").textContent =
+            "Oops! Wrong password 🥺💛";
+
+    }
+
+}
+
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function showPage(pageId){
+
+    const pages =
+        document.querySelectorAll(".page");
+
+
+    pages.forEach(function(page){
+
+        page.classList.remove("active");
+
+    });
+
+
+    const selectedPage =
+        document.getElementById(pageId);
+
+
+    if(selectedPage){
+
+        selectedPage.classList.add("active");
+
+        selectedPage.scrollTop = 0;
+
+    }
+
+}
+
+
+/* ENTER KEY FOR PASSWORD */
+
+document
+.getElementById("passwordInput")
+.addEventListener("keydown", function(event){
+
+    if(event.key === "Enter"){
+
+        checkPassword();
+
+    }
+
+});
+
+</script>
+
+
+</body>
+</html>
